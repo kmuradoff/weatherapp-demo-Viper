@@ -3,10 +3,12 @@
 //  WeatherApp
 //
 //  Created by Kamal Muradov on 17.10.2025
-//  
+//
 //
 
 import SwiftUI
+import Foundation
+import Combine
 
 final class ApplicationViewBuilder : Assembly, ObservableObject {
     
@@ -19,6 +21,8 @@ final class ApplicationViewBuilder : Assembly, ObservableObject {
         switch view {
         case .main:
             buildMain()
+        case .cityDetails(let city):
+            buildCityDetails(city: city)
         }
     }
     
@@ -27,10 +31,13 @@ final class ApplicationViewBuilder : Assembly, ObservableObject {
         container.resolve(MainAssembly.self).build()
     }
     
+    @ViewBuilder
+    fileprivate func buildCityDetails(city: City) -> some View {
+        container.resolve(CityDetailsAssembly.self).build(city: city)
+    }
 }
 
 extension ApplicationViewBuilder {
-    
     static var stub: ApplicationViewBuilder {
         return ApplicationViewBuilder(
             container: RootApp().container

@@ -3,7 +3,7 @@
 //  WeatherApp
 //
 //  Created by Kamal Muradov on 17.10.2025
-//  
+//
 //
 
 import SwiftUI
@@ -17,10 +17,7 @@ struct RootView: View {
         NavigationStack(path: $navigationService.items) {
             appViewBuilder.build(view: .main)
                 .navigationDestination(for: Views.self) { path in
-                    switch path {
-                    default:
-                        fatalError()
-                    }
+                    appViewBuilder.build(view: path)
                 }
         }
         .fullScreenCover(item: $navigationService.popupView) { item in

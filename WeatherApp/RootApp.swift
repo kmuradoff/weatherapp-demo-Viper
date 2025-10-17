@@ -20,6 +20,8 @@ struct RootApp: App {
                 
         // Services
         container.apply(NavigationAssembly.self)
+        container.apply(WeatherServiceAssembly.self)
+        container.apply(CityDetailsAssembly.self)
     
         // Modules
         container.apply(MainAssembly.self)

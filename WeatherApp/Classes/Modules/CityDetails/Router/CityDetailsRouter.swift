@@ -8,14 +8,16 @@
 
 import Foundation
 
-final class MainRouter: MainRouterProtocol {
+final class CityDetailsRouter: CityDetailsRouterProtocol {
     var navigationService: any NavigationServiceType
     
     init(navigationService: any NavigationServiceType) {
         self.navigationService = navigationService
     }
     
-    func openCityDetails(_ city: City) {
-        navigationService.items.append(.cityDetails(city: city))
+    func close() {
+        if !navigationService.items.isEmpty {
+            navigationService.items.removeLast()
+        }
     }
 }

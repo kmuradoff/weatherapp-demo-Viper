@@ -28,4 +28,5 @@ protocol NavigationServiceType: ObservableObject, Identifiable {
     /// The current alert (dialog window), if active.
     /// Can be `nil` if there are no active alerts.
     var alert: CustomAlert? { get set }
+    
 }
